@@ -26,8 +26,8 @@ function draw() {
       }else{
         fill(0,0,255);
       }
-    rect(i*20,i*20,20,20);
     }
+    rect(i*20,i*20,20,20);
   }
 }
 
