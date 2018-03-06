@@ -3,13 +3,13 @@
 var flock;
 
 function setup() {
-  createCanvas(640,360);
+  createCanvas(1000,1000);
   
   
   flock = new Flock();
   // Add an initial set of boids into the system
   for (var i = 0; i < 100; i++) {
-    var b = new Boid(width/2,height/2);
+    var b = new Boid(width/2,height/2,0,0,0);
     flock.addBoid(b);
   }
 }
@@ -57,6 +57,7 @@ function Boid(x,y) {
   this.r = 3.0;
   this.maxspeed = 3;    // Maximum speed
   this.maxforce = 0.05; // Maximum steering force
+  
 }
 
 Boid.prototype.run = function(boids) {
@@ -112,7 +113,11 @@ Boid.prototype.seek = function(target) {
 Boid.prototype.render = function() {
   // Draw a triangle rotated in the direction of velocity
   var theta = this.velocity.heading() + radians(90);
-  fill(127);
+  one=map(this.position.x, 0,255,0,720);
+  three=map(this.position.y, 0,255,0,360);
+  two = mouseX + mouseY;
+  two = map(two, 0,2000, 0,255);
+  fill(one,two,three);
   stroke(200);
   push();
   translate(this.position.x,this.position.y);
